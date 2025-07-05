@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Интернет-магазин</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример навигационной панели</title>
+	<link rel="stylesheet" href="..\css\katalog.css">
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .menu { margin: 30px auto 0; text-align: center; }
+    .menu button {
+      padding: 10px 22px;
+      margin: 0 7px;
+      border: none;
+      border-radius: 6px;
+      background: #2e56d5;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .2s;
+    }
+    
+	.profiles {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    .profile-card {
+	font-family: 'Comic Sans MS', 'Arial';
+      background: #e4d47c;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0,0,0,.1);
+      padding: 32px;
+      width: 320px;
+      text-align: center;
+    }
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+    .name {
+      font-size: 1.7em;
+      margin-bottom: 0.2em;
+    }
+    .about {
+      color: #466;
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+	<div class="container">
+     <a href="Главная.html">
+  <svg width="100" height="100" viewBox="0 22 100 50" xmlns="http://www.w3.org/2000/svg">
+    <image href="..\img\log.svg" x="0" y="0" width="100" height="100"></image>
+  </svg>
+  <div class="text-content">
+		<h1>🛍️ Добро пожаловать Электроник-дом!</h1>
+		<p>Лучшие товары по лучшим ценам</p>
+		</div>
+	</a>
+		</div>
+      <nav>
+        <ul>
+          <li><a href="Главная.html" >Главная</a></li>
+          <li><a href="каталог.html" onclick="showCategory('all')" class="active">Продукты</a></li>
+          <li><a href="#" onclick="toggleAbout()">О нас</a></li>
+          <li><a href="карзина.html">Корзина</a></li>
+        </ul>
+      </nav>
+
+      <div class="search">
+        <input type="text" placeholder="Поиск" id="searchInput">
+        <button id="searchButton">Найти</button>
+      </div>
+    </div>
+   </div>
+
+  <h2 style="text-align:center;">О НАС</h2>
+ 
+<div class="profiles">
+    <div class="profile-card">
+      <img src="https://steamuserimages-a.akamaihd.net/ugc/5122313230693360762/745B24177803215FB96DF2C9E7FB3B224AC36DE9/?imw=512&amp;&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=false" alt="Фото Владимир">
+      <div class="name">Владимир </div>
+      <div class="about">
+        Привет! Я Владимир, мне 24 года.<br>
+        Я студент группы УБВТ 2301.
+        МЫ  с моим товарищем впервые сделали интернет-магазин и будем надеямся, что он вам понравиться .<br>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img src="https://en.gravitycraft.net/api/internal/v1/files/get/avatar/0fa8422e-4de3-4095-827d-3cf16ad762b5" alt="Фото Артем">
+      <div class="name">Артем</div>
+      <div class="about">
+        Привет! Я Артем, мне 23 лет.<br>
+        Я студент группы УБВТ 2301.
+        МЫ  с моим товарищем впервые сделали интернет-магазин и будем надеямся, что он вам понравиться.<br>
+      </div>
+    </div>
+  </div>
+  
+
+  
+	
+  
+  
+  <script src="..\js\katalog.js"></script>
+</body>
+<footer>
+        © 2024 BroShop | Все права защищены
+    </footer>
+</html>
+
+ 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <title>Интернет-магазин</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример навигационной панели</title>
+	<link rel="stylesheet" href="..\css\katalog.css">
+  <style>
+ #cart-container {
+  align-items: center;    /* Выравниваем элементы по вертикали (по центру) */
+}
+
+#cart {
+  /* Стили для корзины (если необходимо) */
+}
+
+#cart-image {
+  width: 500px; /*  Например, установите ширину картинки */
+  height: auto; /*  Чтобы сохранить пропорции */
+  float: right;
+}
+  </style>
+</head>
+<body>
+<div id="header">
+	<div class="container">
+     <a href="Главная.html">
+  <svg width="100" height="100" viewBox="0 22 100 50" xmlns="http://www.w3.org/2000/svg">
+    <image href="..\img\log.svg" x="0" y="0" width="100" height="100"></image>
+  </svg>
+  <div class="text-content">
+		<h1>🛍️ Добро пожаловать Электроник-дом!</h1>
+		<p>Лучшие товары по лучшим ценам</p>
+		</div>
+	</a>
+		</div>
+      <nav>
+        <ul>
+          <li><a href="Главная.html" onclick="showCategory('all')" >Главная</a></li>
+          <li><a href="каталог.html" onclick="showCategory('all')" class="active">Продукты</a></li>
+          <li><a href="о нас.html" onclick="toggleAbout()">О нас</a></li>
+          <li><a href="#">Корзина</a></li>
+        </ul>
+      </nav>
+      <div class="search">
+        <input type="text" placeholder="Поиск" id="searchInput">
+        <button id="searchButton">Найти</button>
+      </div>
+    </div>
+   </div>
+   
+  <h2>🧺 Ваша корзина</h2>
+  <div id="cart-container">
+  <div id="cart">
+    <!-- Здесь будет отображаться корзина -->
+  </div>
+  <img id="cart-image" src="../img/эммм.png" alt="Корзина с товарами" style="display: none; align: right;">
+</div>
+  <div class="fun">
+  
+  </div>
+<script>
+    let cart = []; // Объявляем cart здесь (важно, чтобы была доступна во всех функциях)
+
+function addToCart(name, price) { // Оставляем, чтобы не было ошибок, но не используем тут
+    // Этот код не должен выполняться на странице корзины
+    console.warn("addToCart не должен вызываться на странице корзины");
+}
+
+function removeFromCart(index) {
+    if (cart[index].qty > 1) {
+        cart[index].qty -= 1; // Уменьшаем количество, если больше 1
+    } else {
+        cart.splice(index, 1); // Удаляем товар, если количество равно 1
+    }
+    saveCartToLocalStorage();
+    renderCart();
+}
+
+function renderCart() {
+    let out = '';
+    const cartImage = document.getElementById('cart-image');
+
+    if (cart.length === 0) {
+        out = '<div class="empty">Корзина пуста 🙃</div>';
+        cartImage.style.display = 'none'; // Скрываем картинку, если корзина пуста
+    } else {
+        out = `<table>
+          <tr><th>Товар</th><th>Кол-во</th><th>Цена</th><th></th></tr>`;
+        let total = 0;
+        cart.forEach((item, idx) => {
+            let sum = item.price * item.qty;
+            total += sum;
+            out += `<tr>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>${sum} ₽</td>
+            <td><button class="remove" onclick="removeFromCart(${idx})">✖</button></td>
+          </tr>`;
+        });
+        out += `<tr class="total-row"><td colspan="2">Итого</td><td colspan="2">${total} ₽</td></tr>`;
+        out += '</table>';
+        cartImage.style.display = 'block';  // Отображаем картинку, если в корзине есть товары
+    }
+    document.getElementById('cart').innerHTML = out;
+}
+
+function saveCartToLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function loadCartFromLocalStorage() {
+    const cartData = localStorage.getItem('cart');
+    cart = cartData ? JSON.parse(cartData) : [];
+}
+
+loadCartFromLocalStorage();
+renderCart();
+  </script>
+  <script src="..\js\katalog.js"></script>
+</body>
+</html>
